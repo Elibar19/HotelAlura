@@ -4,15 +4,17 @@
  */
 package views;
 
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Elián
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    int xMouse, yMouse;
     public Login() {
         initComponents();
     }
@@ -26,21 +28,244 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        container = new javax.swing.JPanel();
+        exitLbl = new javax.swing.JLabel();
+        lblImageHotel = new javax.swing.JLabel();
+        header = new javax.swing.JPanel();
+        logoLbl = new javax.swing.JLabel();
+        iniciarSesionLbl = new javax.swing.JLabel();
+        usuarioLabel = new javax.swing.JLabel();
+        usuarioField = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        usuarioLabel1 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        loginBtn = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(100, 100, 788, 527));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(788, 527));
+        setResizable(false);
+        getContentPane().setLayout(null);
+
+        container.setBackground(new java.awt.Color(255, 255, 255));
+        container.setPreferredSize(new java.awt.Dimension(788, 527));
+        container.setLayout(null);
+
+        exitLbl.setBackground(new java.awt.Color(0, 150, 199));
+        exitLbl.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        exitLbl.setForeground(new java.awt.Color(255, 255, 255));
+        exitLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitLbl.setText("X");
+        exitLbl.setOpaque(true);
+        exitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitLblMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitLblMouseExited(evt);
+            }
+        });
+        container.add(exitLbl);
+        exitLbl.setBounds(760, 0, 30, 30);
+
+        lblImageHotel.setBackground(new java.awt.Color(0, 150, 199));
+        lblImageHotel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\img-hotel-login-.png")); // NOI18N
+        lblImageHotel.setOpaque(true);
+        container.add(lblImageHotel);
+        lblImageHotel.setBounds(486, 0, 302, 527);
+
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
+
+        container.add(header);
+        header.setBounds(0, 0, 790, 30);
+
+        logoLbl.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\lOGO-50PX.png")); // NOI18N
+        logoLbl.setAlignmentY(0.0F);
+        container.add(logoLbl);
+        logoLbl.setBounds(60, 70, 50, 50);
+
+        iniciarSesionLbl.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        iniciarSesionLbl.setForeground(java.awt.SystemColor.textHighlight);
+        iniciarSesionLbl.setText("INICIAR SESIÓN");
+        container.add(iniciarSesionLbl);
+        iniciarSesionLbl.setBounds(60, 140, 220, 40);
+
+        usuarioLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        usuarioLabel.setForeground(java.awt.SystemColor.textInactiveText);
+        usuarioLabel.setText("USUARIO");
+        container.add(usuarioLabel);
+        usuarioLabel.setBounds(60, 220, 100, 20);
+
+        usuarioField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        usuarioField.setForeground(new java.awt.Color(153, 153, 153));
+        usuarioField.setText("Ingrese su nombre de usuario...");
+        usuarioField.setBorder(null);
+        usuarioField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioFieldMouseClicked(evt);
+            }
+        });
+        usuarioField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioFieldActionPerformed(evt);
+            }
+        });
+        container.add(usuarioField);
+        usuarioField.setBounds(60, 250, 300, 30);
+
+        jSeparator1.setForeground(new java.awt.Color(0, 120, 215));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(300, 20));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 20));
+        container.add(jSeparator1);
+        jSeparator1.setBounds(60, 280, 300, 10);
+
+        jSeparator2.setForeground(new java.awt.Color(0, 120, 215));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(300, 20));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(50, 20));
+        container.add(jSeparator2);
+        jSeparator2.setBounds(60, 380, 300, 10);
+
+        usuarioLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        usuarioLabel1.setForeground(java.awt.SystemColor.textInactiveText);
+        usuarioLabel1.setText("CONTRASEÑA");
+        container.add(usuarioLabel1);
+        usuarioLabel1.setBounds(60, 320, 150, 20);
+
+        passwordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        passwordField.setForeground(new java.awt.Color(204, 204, 204));
+        passwordField.setText("********");
+        passwordField.setToolTipText("");
+        passwordField.setBorder(null);
+        passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passwordFieldMouseClicked(evt);
+            }
+        });
+        container.add(passwordField);
+        passwordField.setBounds(60, 350, 300, 30);
+
+        loginBtn.setBackground(java.awt.SystemColor.textHighlight);
+        loginBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
+        loginBtn.setText("ENTRAR");
+        loginBtn.setToolTipText("");
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginBtnMouseExited(evt);
+            }
+        });
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
+        container.add(loginBtn);
+        loginBtn.setBounds(60, 420, 100, 32);
+
+        getContentPane().add(container);
+        container.setBounds(0, 0, 788, 527);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void usuarioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioFieldActionPerformed
+
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+         int x = evt.getXOnScreen();
+         int y = evt.getYOnScreen();
+         this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_headerMouseDragged
+
+    private void exitLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLblMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitLblMouseClicked
+
+    private void exitLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLblMouseEntered
+        exitLbl.setBackground(Color.red);
+    }//GEN-LAST:event_exitLblMouseEntered
+
+    private void exitLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLblMouseExited
+        exitLbl.setBackground(new Color(0,150,199));
+    }//GEN-LAST:event_exitLblMouseExited
+
+    private void usuarioFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioFieldMouseClicked
+        if(usuarioField.getText().equals("Ingrese su nombre de usuario...")){
+            usuarioField.setText("");
+            usuarioField.setForeground(Color.black);
+        }
+        if(String.valueOf(passwordField.getPassword()).isEmpty()){
+            passwordField.setText("********");
+            passwordField.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_usuarioFieldMouseClicked
+
+    private void passwordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMouseClicked
+        if(usuarioField.getText().equals("")){
+            usuarioField.setText("Ingrese su nombre de usuario...");
+            usuarioField.setForeground(Color.gray);
+        }
+        if(String.valueOf(passwordField.getPassword()).equals("********")){
+            passwordField.setText("");
+            passwordField.setForeground(Color.black);
+        }
+        
+    }//GEN-LAST:event_passwordFieldMouseClicked
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
+        loginBtn.setBackground(new Color(0, 156, 223));
+    }//GEN-LAST:event_loginBtnMouseEntered
+
+    private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
+        loginBtn.setBackground(SystemColor.textHighlight);
+    }//GEN-LAST:event_loginBtnMouseExited
+
+    private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
+        entrar();
+    }//GEN-LAST:event_loginBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +303,34 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel container;
+    private javax.swing.JLabel exitLbl;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel iniciarSesionLbl;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblImageHotel;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JLabel logoLbl;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usuarioField;
+    private javax.swing.JLabel usuarioLabel;
+    private javax.swing.JLabel usuarioLabel1;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void entrar() {
+        String user = "admin";
+        String password = "admin";
+        
+        String pass = new String(passwordField.getPassword());
+        
+        if (user.equals(usuarioField.getText()) && password.equals(pass)){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+	            dispose();	 
+	        }else {
+	            JOptionPane.showMessageDialog(this, "Usuario o Contraseña no válidos");
+	        }
+            
+    }
+    }
