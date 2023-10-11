@@ -54,7 +54,7 @@ public class Login extends javax.swing.JFrame {
         container.setLayout(null);
 
         exitLbl.setBackground(new java.awt.Color(0, 150, 199));
-        exitLbl.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        exitLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         exitLbl.setForeground(new java.awt.Color(255, 255, 255));
         exitLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitLbl.setText("X");
@@ -325,7 +325,7 @@ public class Login extends javax.swing.JFrame {
         String pass = new String(passwordField.getPassword());
         
         if (user.equals(usuarioField.getText()) && password.equals(pass)){
-            Menu menu = new Menu();
+            MenuUsuario menu = new MenuUsuario();
             menu.setVisible(true);
 	            dispose();	 
 	        }else {
