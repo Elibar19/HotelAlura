@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 /**
  *
  * @author Elián
@@ -15,12 +10,9 @@ import java.util.Date;
 public class MenuUsuario extends javax.swing.JFrame {
 
     Date fechaActual = new Date();
-    String fecha = new SimpleDateFormat("d/mm/yyyy").format(fechaActual);
+    String fecha = new SimpleDateFormat("dd/MM/yyyy").format(fechaActual);
     int xMouse, yMouse;
-    
-    /**
-     * Creates new form Menu
-     */
+
     public MenuUsuario() {
         initComponents();
     }
@@ -153,6 +145,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         exitLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         exitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitLabel.setText("X");
+        exitLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitLabel.setOpaque(true);
         exitLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -274,7 +267,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_busquedaLabelMouseEntered
 
     private void busquedaLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busquedaLabelMouseExited
-        busquedaLabel.setFont(new java.awt.Font("Segoe UI", 1, 19));
+        busquedaLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
     }//GEN-LAST:event_busquedaLabelMouseExited
 
     private void registroReservasLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroReservasLabelMouseClicked
@@ -291,9 +284,6 @@ public class MenuUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_busquedaLabelMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -197,6 +197,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         Login login  = new Login();
+        login.setLocationRelativeTo(null);
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_loginMouseClicked

@@ -1,8 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views;
+
+import com.hotelalura.Entidades.Reserva;
+import com.hotelalura.controller.ReservaController;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import persistencia.ReservaDAO;
 
 /**
  *
@@ -10,11 +19,12 @@ package views;
  */
 public class Reservas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Reservas
-     */
+    int xMouse, yMouse;
+    ReservaDAO dao;
+
     public Reservas() {
         initComponents();
+        this.dao = new ReservaDAO();
     }
 
     /**
@@ -26,25 +36,327 @@ public class Reservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        contentPanel = new javax.swing.JPanel();
+        imagenPanel = new javax.swing.JPanel();
+        imagenFondoLabel = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
+        exitLabel = new javax.swing.JLabel();
+        registroPanel = new javax.swing.JPanel();
+        tituloLabel = new javax.swing.JLabel();
+        fechaELabel = new javax.swing.JLabel();
+        fechaEntrada = new com.toedter.calendar.JDateChooser();
+        fechaSLabel = new javax.swing.JLabel();
+        precioLabel = new javax.swing.JLabel();
+        precioField = new javax.swing.JTextField();
+        fechaSalida = new com.toedter.calendar.JDateChooser();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        precioLabel1 = new javax.swing.JLabel();
+        formaDePago = new javax.swing.JComboBox<>();
+        atrasLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        header = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(100, 100, 960, 510));
+        setUndecorated(true);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imagenPanel.setBackground(new java.awt.Color(12, 138, 199));
+        imagenPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imagenFondoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\reservas-img-3.png")); // NOI18N
+        imagenFondoLabel.setText("jLabel2");
+        imagenPanel.add(imagenFondoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 172, -1, 363));
+
+        logoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\Ha-100px.png")); // NOI18N
+        imagenPanel.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 66, -1, -1));
+
+        exitLabel.setBackground(new java.awt.Color(12, 138, 199));
+        exitLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        exitLabel.setForeground(new java.awt.Color(255, 255, 255));
+        exitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitLabel.setText("X");
+        exitLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitLabel.setOpaque(true);
+        exitLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitLabelMouseExited(evt);
+            }
+        });
+        imagenPanel.add(exitLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 40, 30));
+
+        contentPanel.add(imagenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 0, 490, 560));
+
+        registroPanel.setBackground(new java.awt.Color(255, 255, 255));
+        registroPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(12, 138, 199));
+        tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloLabel.setText("SISTEMA DE RESERVAS");
+        tituloLabel.setToolTipText("");
+        registroPanel.add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 239, -1));
+
+        fechaELabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        fechaELabel.setForeground(java.awt.SystemColor.textInactiveText);
+        fechaELabel.setText("FECHA DE CHECK-IN");
+        registroPanel.add(fechaELabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 86, -1, -1));
+
+        fechaEntrada.setBackground(java.awt.SystemColor.textHighlightText);
+        fechaEntrada.setDateFormatString("dd/MM/yyyy");
+        fechaEntrada.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\icon-reservas.png"));
+        fechaEntrada.setInheritsPopupMenu(true);
+        fechaEntrada.setMaxSelectableDate(new java.util.Date(1735704060000L));
+        fechaEntrada.setMinSelectableDate(new Date());
+        fechaEntrada.setName("fechaEntrada"); // NOI18N
+        fechaEntrada.setOpaque(false);
+        registroPanel.add(fechaEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 119, 220, 47));
+
+        fechaSLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        fechaSLabel.setForeground(java.awt.SystemColor.textInactiveText);
+        fechaSLabel.setText("FECHA DE CHECK-OUT");
+        registroPanel.add(fechaSLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 194, -1, -1));
+
+        precioLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        precioLabel.setForeground(java.awt.SystemColor.textInactiveText);
+        precioLabel.setText("VALOR DE LA RESERVA");
+        registroPanel.add(precioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 311, -1, -1));
+
+        precioField.setEditable(false);
+        precioField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        precioField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        precioField.setText("$");
+        precioField.setBorder(null);
+        precioField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioFieldActionPerformed(evt);
+            }
+        });
+        registroPanel.add(precioField, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 344, 219, 39));
+
+        fechaSalida.setBackground(java.awt.SystemColor.textHighlightText);
+        fechaSalida.setDate(fechaEntrada.getDate());
+        fechaSalida.setDateFormatString("dd/MM/yyyy");
+        fechaSalida.setIcon(new javax.swing.ImageIcon("C:\\Users\\Elián\\Documents\\NetBeansProjects\\HotelAlura\\src\\main\\java\\views\\imagenes\\icon-reservas.png"));
+        fechaSalida.setInheritsPopupMenu(true);
+        fechaSalida.setMaxSelectableDate(new java.util.Date(1735704060000L));
+        fechaSalida.setMinSelectableDate(null);
+        fechaSalida.setName("fechaEntrada"); // NOI18N
+        fechaSalida.setOpaque(false);
+        fechaSalida.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaSalidaPropertyChange(evt);
+            }
+        });
+        registroPanel.add(fechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 233, 220, 47));
+
+        jSeparator1.setForeground(java.awt.SystemColor.textHighlight);
+        registroPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 178, 221, -1));
+
+        jSeparator2.setForeground(java.awt.SystemColor.textHighlight);
+        registroPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 292, 221, 15));
+
+        jSeparator3.setForeground(java.awt.SystemColor.textHighlight);
+        registroPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 389, 221, 21));
+
+        precioLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        precioLabel1.setForeground(java.awt.SystemColor.textInactiveText);
+        precioLabel1.setText("FORMA DE PAGO");
+        registroPanel.add(precioLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 416, -1, -1));
+
+        formaDePago.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        formaDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta de crédito", "Tarjeta de débito", "Efectivo" }));
+        registroPanel.add(formaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 455, 221, 37));
+
+        atrasLabel.setBackground(new java.awt.Color(255, 255, 255));
+        atrasLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        atrasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        atrasLabel.setText("<");
+        atrasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atrasLabel.setOpaque(true);
+        atrasLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atrasLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                atrasLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                atrasLabelMouseExited(evt);
+            }
+        });
+        registroPanel.add(atrasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 30, 30));
+
+        jButton1.setBackground(java.awt.SystemColor.textHighlight);
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("SIGUIENTE");
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        registroPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 100, 30));
+
+        contentPanel.add(registroPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 560));
+
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
+
+        contentPanel.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
+
+        getContentPane().add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 912, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void precioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioFieldActionPerformed
+
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_headerMouseDragged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void exitLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabelMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitLabelMouseClicked
+
+    private void exitLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabelMouseEntered
+        exitLabel.setBackground(Color.red);
+        exitLabel.setForeground(Color.white);
+    }//GEN-LAST:event_exitLabelMouseEntered
+
+    private void exitLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabelMouseExited
+        exitLabel.setBackground(new Color(12, 138, 199));
+        exitLabel.setForeground(Color.white);
+    }//GEN-LAST:event_exitLabelMouseExited
+
+    private void atrasLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasLabelMouseEntered
+        atrasLabel.setFont(new java.awt.Font("Segoe UI", 1, 26));
+    }//GEN-LAST:event_atrasLabelMouseEntered
+
+    private void atrasLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasLabelMouseExited
+        atrasLabel.setFont(new java.awt.Font("Segoe UI", 1, 24));
+    }//GEN-LAST:event_atrasLabelMouseExited
+
+    private void atrasLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasLabelMouseClicked
+        MenuUsuario menu = new MenuUsuario();
+        menu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_atrasLabelMouseClicked
+
+    private void fechaSalidaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaSalidaPropertyChange
+        
+        Date fechaE = fechaEntrada.getDate();
+        fechaSalida.setSelectableDateRange(fechaE, null);
+        calcularValor(fechaEntrada, fechaSalida);
+    }//GEN-LAST:event_fechaSalidaPropertyChange
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        if (fechaEntrada.getDate() != null && fechaSalida.getDate() != null) {
+            guardarReserva();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los datos");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void calcularValor(JDateChooser fechaEntrada, JDateChooser fechaSalida) {
+        if (fechaEntrada.getDate() != null && fechaSalida.getDate() != null) {
+            Calendar inicio = fechaEntrada.getCalendar();
+            Calendar salida = fechaSalida.getCalendar();
+            int dias = -1; // Usamos -1 para contar a partir del dia siguiente
+            int diaria = 500;
+            int valor;
+            while (inicio.before(salida) || inicio.equals(salida)) {
+                dias++;
+                inicio.add(Calendar.DATE, 1); //dias a ser aumentados
+            }
+
+            valor = dias * diaria;
+            precioField.setText("$" + valor);
+        }
+    }
+
+    private void guardarReserva() {
+        String fechaE = ((JTextField) fechaEntrada.getDateEditor().getUiComponent()).getText();
+        String fechaS = ((JTextField) fechaSalida.getDateEditor().getUiComponent()).getText();
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); // Formato de fecha legible
+
+        try {
+            // Parsea las fechas legibles al formato de Date requerido ("yyyy-MM-dd")
+            Date fechaEntradaParsed = formato.parse(fechaE);
+            Date fechaSalidaParsed = formato.parse(fechaS);
+
+            // Luego, convierte las fechas parseadas a java.sql.Date
+            Date fechaEntradaSQL = new Date(fechaEntradaParsed.getTime());
+            Date fechaSalidaSQL = new Date(fechaSalidaParsed.getTime());
+
+            // Ahora tienes las fechas en el formato correcto para usar en tu objeto Reserva
+            Reserva nuevaReserva = new Reserva(fechaEntradaSQL, fechaSalidaSQL, precioField.getText(), formaDePago.getSelectedItem().toString());
+            dao.persistirEntidad(nuevaReserva);
+            JOptionPane.showMessageDialog(null, "Registro guardado con éxito. Su número de registro es: " + nuevaReserva.getId());
+            RegistroHuesped huesped = new RegistroHuesped(nuevaReserva.getId());
+            huesped.setVisible(true);
+            dispose();
+        } catch (ParseException e) {
+            // Maneja cualquier error de análisis de fecha aquí
+        }
+
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -78,5 +390,27 @@ public class Reservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel atrasLabel;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JLabel exitLabel;
+    private javax.swing.JLabel fechaELabel;
+    private com.toedter.calendar.JDateChooser fechaEntrada;
+    private javax.swing.JLabel fechaSLabel;
+    private com.toedter.calendar.JDateChooser fechaSalida;
+    private javax.swing.JComboBox<String> formaDePago;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel imagenFondoLabel;
+    private javax.swing.JPanel imagenPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel logoLabel;
+    private javax.swing.JTextField precioField;
+    private javax.swing.JLabel precioLabel;
+    private javax.swing.JLabel precioLabel1;
+    private javax.swing.JPanel registroPanel;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
+
 }

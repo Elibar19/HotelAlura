@@ -58,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         exitLbl.setForeground(new java.awt.Color(255, 255, 255));
         exitLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitLbl.setText("X");
+        exitLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitLbl.setOpaque(true);
         exitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -326,6 +327,7 @@ public class Login extends javax.swing.JFrame {
         
         if (user.equals(usuarioField.getText()) && password.equals(pass)){
             MenuUsuario menu = new MenuUsuario();
+            menu.setLocationRelativeTo(null);
             menu.setVisible(true);
 	            dispose();	 
 	        }else {
